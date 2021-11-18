@@ -1,0 +1,12 @@
+i=int(input())#Przypominam że wg. niektórych w Pythonie nie tzreba podawac typów zmiennych bo Python sobie sam poradzi. XDDDDD
+j=range(1,11)
+print(i*j[0])
+print(i*j[1])
+print(i*j[2])
+print(i*j[3])
+print(i*j[4])
+print(i*j[5])
+print(i*j[6])
+print(i*j[7])
+print(i*j[8])
+print(i*j[9])
