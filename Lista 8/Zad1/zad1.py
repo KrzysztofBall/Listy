@@ -1,22 +1,5 @@
 import datetime
 import os
-data = str(datetime.date.today())
-while(1>0):
-    sciezka = input("podaj ścieżkę pliku do zaszyfrowania: ")
-    try:
-        plik = open(sciezka, "r")
-    except FileNotFoundError:
-        print("Błąd. Zła ścieżka")
-    except IOError:
-        print("Błąd otwarcia pliku!")
-    else:
-        plik = open(sciezka, "r")
-        break
-while(1>0):
-    klucz = int(input("Podaj klucz. Zakres 1 - 10:"))
-    if (klucz > 0 and klucz < 11):
-        break
-tekst = str(plik.readlines())
 def szyfrowanie(tekst, n):
     if n > 26:
         n = n % 26
@@ -37,23 +20,40 @@ def szyfrowanie(tekst, n):
             i = chr(i)
             zasz += i
     return zasz
+while(1>0):
+    sciezka = input("podaj ścieżkę pliku do zaszyfrowania: ")
+    try:
+        plik = open(sciezka, "r")
+    except FileNotFoundError:
+        print("Błąd. Zła ścieżka")
+    except IOError:
+        print("Błąd otwarcia pliku!")
+    else:
+        plik = open(sciezka, "r")
+        break
+while(1>0):
+    klucz = int(input("Podaj klucz. Zakres 1 - 10:"))
+    if (klucz > 0 and klucz < 11):
+        break
+tekst = str(plik.readlines())
 tekst = tekst.upper()
 wynik = szyfrowanie(tekst,klucz)
 klucz = str(klucz)
 plik.close()
-while(1):
-    katalog = input("podaj katalog w którym chcesz zapisać ")
+data = str(datetime.date.today())
+while(1>0):
+    folder = input("podaj nazwę folderu w którym chcesz zapisać ")
     try:
-        plik2 = open(katalog + "/" + "plik_zaszyfrowany" + klucz + "_" + data + ".txt","w")
+        plik2 = open(folder + "/" + "plik_zaszyfrowany" + klucz + "_" + data + ".txt","w")
     except FileNotFoundError:
-        os.makedirs(katalog)
-        plik2 = open(katalog + "/" + "plik_zaszyfrowany" + klucz + "_" + data + ".txt", "w")
+        os.makedirs(folder)
+        plik2 = open(folder + "/" + "plik_zaszyfrowany" + klucz + "_" + data + ".txt", "w")
         break
     except OSError:
-        print("nie można zapisać takiego katalogu ")
+        print("nie można zapisać takiego folderu ")
     else:
-        katalog = input("podaj katalog w którym chcesz zapisać ")
-        plik2 = open(katalog + "/" + "plik_zaszyfrowany" + klucz + "_" + data + ".txt", "w")
+        folder = input("podaj folder w którym chcesz zapisać ")
+        plik2 = open(folder + "/" + "plik_zaszyfrowany" + klucz + "_" + data + ".txt", "w")
         break
 plik2.write(wynik)
 plik2.close()
