@@ -3,7 +3,9 @@ class podlisty:
     def __init__(self,lista):
         self.lista=lista
     def pod(self):
-        a=combinations(self.lista)
+        a=[]
+        for i in range(len(self.lista)+1):
+            a+=list(itertools.combinations(self.lista,i))
         return a
-q=podlisty([1,4,3,8,6,4,6])
+q=podlisty([1,2,3])
 print(q.pod())

@@ -10,7 +10,7 @@ def czywystapila(lista,a):
     return 0
 def funkcja(lista):
     wystopienia=[]
-    for i in range(len(lista)):
+    for i in range(len(lista)-1):
         if czywystapila(wystopienia,lista[i])==0:
             wystopienia.append(lista[i])
         else:
